@@ -1,16 +1,20 @@
-## Hi there 👋
+section .data
+  name db "Artemy Vanchugov", 0xA
+  music db "According to my mood", 0xA
+  telegram db "https://t.me/makeddonov", 0xA
+  msg db "Someone in the world is having fun, someone is feeling good. Everyone`s had some luck in life - but I was lucky."
+  message_len equ $ - msg
 
-<!--
-**makeddonov/makeddonov** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+section .text
+  global _start
 
-Here are some ideas to get you started:
+_start:
+  mov rax, 1
+  mov rdi, 1
+  mov rsi, msg
+  mov rdx, message_len
+  syscall
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+_end:
+  mov rax, 60
+  syscall
